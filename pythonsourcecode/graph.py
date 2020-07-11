@@ -1,3 +1,4 @@
+# graph module
 import math
 global nodelist, edgelist
 global dim
