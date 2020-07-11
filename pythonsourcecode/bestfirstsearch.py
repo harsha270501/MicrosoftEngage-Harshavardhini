@@ -1,22 +1,34 @@
-
+# module - for A* search
+# imports graph module
 import graph as g
 global walk
 
+# list opt - specifies the options opted. opt[0]- option for Diagonal Movement, opt[1]- heuristics option if any
 opt = []
+# list walk- specifies if each cell is walkable or not
 walk=[]
+# list endpt - endpt[0]- cell number , endpt[1] - x coordinate , endpt[2] - y coordinate
 endpt=[]
+# list visit - specifies if the cell has been already visited or not
 visit=[]
 
+# Function block_node changes the corresponding 'walk' and 'visit' value
+# @param blist - list of nodes that needs to be blocked
 def block_node(blist):
     for i in range(g.dim[0] * g.dim[1]):
         walk.append(True)
         visit.append(False)
 
     for i in blist:
-
         walk[i] = False
 
-
+# Function bestfs_path calls the bestfs_search function and traces back the path
+# @param option - list of options
+# @param s - start cell
+# @param e - end cell
+# @param blist - list of nodes that needs to be blocked
+# @return (trace,distance) - returns trace list and total distance on a successful search
+#                            else returns "Not Found"
 def bestfs_path(options,s,e,blist):
 
     block_node(blist)
@@ -35,9 +47,10 @@ def bestfs_path(options,s,e,blist):
     visit[s]=True
 
 
-    bestfs_search(e, visit, q, path)
+    b=bestfs_search(e, visit, q, path)
+    if b == -1:
+        return "Not Found"
     trace = []
-
     i = path[e][0]
     trace.append(e)
     while i != -1:
@@ -46,6 +59,12 @@ def bestfs_path(options,s,e,blist):
     trace.reverse()
     return (trace,path[e][1])
 
+# Function bfs_search - performs the Breadth First Search
+# @param e - end cell number
+# @param v - cell v whose adjacent cells have to be explored
+# @param q - best first search queue
+# @param p - path traced (cell number : (parent cell number, distance)
+# @return - returns 0 if successful else returns -1
 
 def bestfs_search(e,v,q,p):
     l = len(q)
