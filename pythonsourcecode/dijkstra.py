@@ -1,15 +1,30 @@
+# module - for dijkstra search
+# imports graph module
+
 import graph as g
 
+# list walk- specifies if each cell is walkable or not
 walk = []
+# list opt - specifies the options opted. opt[0]- option for Diagonal Movement, opt[1]- heuristics option if any
 opt = []
 
-
+# Function block_node changes the corresponding 'walk' value
+# @param blist - list of nodes that needs to be blocked
 def block_node(blist):
     for i in range(g.dim[0]*g.dim[1]):
         walk.append(True)
 
     for i in blist:
         walk[i] = False
+
+
+# Function dijkstra_path calls the dijkstra_search function and traces back the path
+# @param option - list of options
+# @param s - start cell
+# @param e - end cell
+# @param blist - list of nodes that needs to be blocked
+# @return (trace,distance) - returns trace list and total distance on a successful search
+#                            else returns -1
 
 def dijkstra_path(option, s, e, blist):
     block_node(blist)
@@ -32,6 +47,12 @@ def dijkstra_path(option, s, e, blist):
     del trace[0:1]
     return (trace,path[e][1])
 
+
+# Function bfs_search - performs the Breadth First Search
+# @param e - end cell number
+# @param v - vertex whose neighbours for which edge relaxation has to be done.
+# @param p - path traced (cell number : (parent cell number, distance)
+# @return - returns 0 if successful else returns -1
 
 def dijkstra_search(e,v,p):
 
