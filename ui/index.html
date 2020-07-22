@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ascii">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/styles.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js" integrity="sha512-tBzZQxySO5q5lqwLWfu8Q+o4VkTcRGOeQGVQ0ueJga4A1RKuzmAu5HXDOXLEjpbKyV7ow9ympVoa6wZLEzRzDg==" crossorigin="anonymous"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>
+    window.jQuery || document.write('<script src="http://mysite.com/jquery.min.js"><\/script>')
+    </script>
+
+    
+    
+
+    <title>Mars Rover</title>
+
+   
+  </head>
+
+  <body>
+    
+    <div id="grid" class="grid" onclick="drawblock(event)"></div>  
+
+    <div id="gridpanel" class="grid panel">
+      <div id="gridpanelheader"><h5>Choose an Algorithm</h5></div>
+      <div id="gridpanelcontent">
+      <form>
+        <div class="radio">
+          <label><input type="radio" name="optradio" id="bfs" onclick="dispheuristic()" checked>Breadth First Search</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="optradio" id="dijkstra" onclick="dispheuristic()">Dijkstra</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="optradio" id="bestfirstsearch" onclick="dispheuristic()">Best First Search</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="optradio" id="Asearch" onclick="dispheuristic()">A* search</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="optradio" id="IDAsearch" onclick="dispheuristic()">IDA* search</label>
+        </div><br><br>
+        <h5>Options for Diagonal Movement</h5><br>
+        <div class="radio">
+          <label><input type="checkbox" name="optradio" id="allowdiagonals" checked>Allow Diagonal</label>
+        </div>
+        <div class="radio">
+          <label><input type="checkbox" name="optradio" id="nocorner">Don't Cross Corners</label>
+        </div>
+        <br>
+        <div id="heuristic" style="display: none;">
+          <h5>Heuristics</h5><br>
+          <form>
+          <div class="radio">
+            <label><input type="radio" name="optradio1" id="euclidean" checked>Euclidean</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="optradio1" id="manhattan">Manhattan</label>
+          </div>
+        </div>
+      </form>
+        <button type="button" class="btn btn-light" onclick="search()">Start Search</button>
+        
+      </form>
+      </div>
+    </div>
+    <div id="distresult" class="grid panel">
+        <h6 id="resultd">Distance: d</h6>
+    </div>
+    
+</body>
+<script type="text/javascript" src="{% static '/js/creategrid.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/drawgrid.js' %}"></script>
+
+<script type="text/javascript" src="{% static '/js/dragpanel.js' %}"></script>
+
+
+
+</html>

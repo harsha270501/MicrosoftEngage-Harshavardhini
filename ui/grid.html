@@ -1,0 +1,31 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ascii">
+    <title>Jeremy's 2D Mobile Device Revit Model Editor Grid</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js" integrity="sha512-tBzZQxySO5q5lqwLWfu8Q+o4VkTcRGOeQGVQ0ueJga4A1RKuzmAu5HXDOXLEjpbKyV7ow9ympVoa6wZLEzRzDg==" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="ascii">
+      window.onload = function () {
+        var w = 1270, h = 1116;
+        var r = Raphael("grid", w, h);
+        --w;
+        --h;
+        r.rect(0, 0, w, h, 10).attr({stroke: "#666"});
+        // grid
+        var d = 31, i;
+        for (i = d; i < h; i += d) {
+          r.path([[ "M", 0, i], ["L", w, i]]).attr({stroke: "#666"});
+        }
+        /*
+        for (i = 50; i < w; i += 50) {
+          r.path([["M", i, 0], ["L", i, w]]).attr({stroke: "#666"});
+        }*/
+      };
+    </script>
+  </head>
+  <body>
+    <div id="grid"></div>
+    
+  </body>
+</html>
