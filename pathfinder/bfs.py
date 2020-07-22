@@ -10,7 +10,6 @@ walk=[]
 # list visit - specifies if the cell has been already visited or not
 visit=[]
 
-
 # Function block_node changes the corresponding 'walk' and 'visit' value
 # @param blist - list of nodes that needs to be blocked
 def block_node(blist):
@@ -36,28 +35,37 @@ def bfs_path(option,s,e,blist):
     opt.clear()
     visit.clear()
     block_node(blist)
-
+    end=[]
+    for i in e:
+        end.append(i)
+    print(end)
     opt.append(option[0])
-
+    
     path = {}
     path[s] = [-1,0]
     q = []
     visit[s]=True
     q.append(s)
-
+    
     b=bfs_search(e, q, path)
     if b == -1:
         return -1
-    trace = []
-    i = path[e][0]
-    trace.append(e)
-    trace.append(i)
-    while i != -1:
-        i = path[i][0]
-        trace.append(i)
-    trace.reverse()
-    del trace[0:1]
-    return [trace,path[e][1]]
+    trace = {}
+
+    for e in end:
+        t=[]
+        print(e)
+        i = path[e][0]
+        t.append(e)
+        t.append(i)
+        while i != -1:
+            i = path[i][0]
+            t.append(i)
+        t.reverse()
+        del t[0:1]
+        print(t,path[e][1])
+        trace[e]=[t,path[e][1]]
+    return trace
 
 
 # Function bfs_search - performs the Breadth First Search
@@ -72,8 +80,12 @@ def bfs_search(e,q,p):
     if len(q) == 0:
         return -1
     for i in range(l):
-        if q[i] == e:
+        if len(e) == 0:
             return 0
+        if q[i] in e:
+            pos=e.index(q[i])
+            del e[pos:pos+1]
+
         visit[q[i]] = True
 
         adj = g.get_neigh(q[i], walk, opt[0])

@@ -15,13 +15,15 @@ body {
 .panel{
     position: absolute;
     left: 1000px;
-    top: 50px;
+    top: 10px;
     z-index: 9;
+    max-width: 300px;
     background-color: gray;
     text-align: center;
     border: 1px solid gray;
+    border-radius: 25px;
 }
-#gridpanelheader{
+#gridpanelheader,#controlpanelheader,#controlpanel2header{
     padding: 10px;
   cursor: move;
   z-index: 10; 
@@ -37,12 +39,27 @@ body {
     text-align: left;
     border: 1px solid gray;
     color: white;
+    border-radius:25px ;
 }
 
+#controlpanel
+{
+    
+    left:700px;
+    top:10px;    
+}
+#controlpanel2
+{
+    left:700px;
+    top:83%;
+    max-width:1000px;
+    background-color: black;
+}
 #distresult{
-    background-color: transparent;
+    background-color: white;
     color: green;
     border: transparent;
     top: 90%;
     left:30px;
 }
+

@@ -32,22 +32,28 @@ def dijkstra_path(option, s, e, blist):
     block_node(blist)
     opt.append(option[0])
     path={}
+    end=[]
+    for i in e:
+        end.append(i)
     #vertex no: src , dist , visited
     path[s]=[-1,0,True]
     d=dijkstra_search(e,s,path)
 
     if d == -1:
         return d
-    trace = []
-    i = path[e][0]
-    trace.append(e)
-    trace.append(i)
-    while i != -1:
-        i = path[i][0]
-        trace.append(i)
-    trace.reverse()
-    del trace[0:1]
-    return (trace,path[e][1])
+    trace = {}
+    for e in end:
+        t=[]
+        i = path[e][0]
+        t.append(e)
+        t.append(i)
+        while i != -1:
+            i = path[i][0]
+            t.append(i)
+        t.reverse()
+        del t[0:1]
+        trace[e]=[t,path[e][1]]
+    return trace
 
 
 # Function dijkstra_search - performs the Dijkstra search
@@ -78,7 +84,10 @@ def dijkstra_search(e,v,p):
     if minv == -1:
         return -1
     p[minv][2]=True
-    if minv == e:
+    if minv in e:
+        pos=e.index(minv)
+        del e[pos:pos+1]
+    if len(e)==0:
         return 0
     return dijkstra_search(e, minv, p)
     return -1
