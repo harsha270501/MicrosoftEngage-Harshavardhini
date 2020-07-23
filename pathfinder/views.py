@@ -18,23 +18,23 @@ def creategrid(request):
 
 def searchpath(request):
    
-    s=int(request.POST.get('start'))
+    s=int(request.GET.get('start'))
     
-    bl=request.POST.getlist('blocked[]')
+    bl=request.GET.getlist('blocked[]')
     blocked = list(map(int, bl))
-    typ=request.POST.get('searchtype')
-    ol=request.POST.getlist('options[]')
+    typ=request.GET.get('searchtype')
+    ol=request.GET.getlist('options[]')
     o=list(map(int, ol))
     res='False'
     if(typ=="bfs"):
-        e=request.POST.getlist('end[]')
+        e=request.GET.getlist('end[]')
         e=list(map(int,e))
         b=bfs.bfs_path(o,s,e,blocked)
         if b!="Not Found":
             res=b
         return JsonResponse({'Result':res});
     elif(typ=="dijkstra"):
-        e=request.POST.getlist('end[]')
+        e=request.GET.getlist('end[]')
         e=list(map(int,e))
         d=dijkstra.dijkstra_path(o, s, e, blocked)
         if d!="Not Found":
@@ -42,7 +42,7 @@ def searchpath(request):
         return JsonResponse({'Result':res});
         
     elif(typ=="bestfirstsearch"):
-        e=int(request.POST.get('end'))
+        e=int(request.GET.get('end'))
         bestfs=bestfirstsearch.bestfs_path(o, s, e, blocked)
         if bestfs!="Not Found":
             x={}
@@ -52,7 +52,7 @@ def searchpath(request):
             res=x
         return JsonResponse({'Result':res});
     elif(typ=="Asearch"):
-        e=int(request.POST.get('end'))
+        e=int(request.GET.get('end'))
         a=asearch.a_path(o, s, e, blocked)
         if a!="Not Found":
             x={}
@@ -62,7 +62,7 @@ def searchpath(request):
         return JsonResponse({'Result':res});
     elif(typ=="IDAsearch"):
 
-        e=int(request.POST.get('end'))
+        e=int(request.GET.get('end'))
         ida= idasearch.ida_path(o, s, e, blocked)
         if ida!="Not Found":
             x={}
