@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'f6i&x5cdf7pluat7szl2m49ple2=(e051-$%47ohq==f=s!+m3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -47,6 +47,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'marsrover.urls'
@@ -122,3 +123,4 @@ STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'static')
     ]
 STATIC_ROOT=os.path.join(BASE_DIR,'assets')
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
