@@ -24,8 +24,7 @@ var dim={
 
 };
 
-$.post('creategrid',dim,function(data,status){
+$.get('creategrid',dim,function(data,status){
  console.log('Created grid successfully'); 
  console.log(data);
 });
-
