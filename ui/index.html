@@ -2,8 +2,8 @@
 <!DOCTYPE html >
 <html lang="en">
   <head>
-    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-    <meta charset="utf-8"/> 
+    <meta http-equiv="Content-Type" content="text/html; charset=ascii">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static '/css/styles.css' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -17,11 +17,7 @@
     window.jQuery || document.write('<script src="http://mysite.com/jquery.min.js"><\/script>')
     </script>
 
-    <script>
-      $(document).ready(function(){
-        $("instrpanel").modal('show');
-      });
-    </script>
+   
     
 
     <title>Mars Rover</title>
@@ -32,28 +28,7 @@
   <body>
     
     <div id="grid" class="grid" onclick="drawblock(event)"></div>  
-    <div id="myModal" class="modal fade">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h4 class="modal-title">Subscribe our Newsletter</h4>
-              </div>
-              <div class="modal-body">
-                <p>Choose any one of the options from control panel.</p>
-                <p>Click at any part of the grid to change the start node,destination node, to add walls or to add additional destination points.</p>
-                <p>Note: Change of the start and end node can be done by dragging the green and red node respectively.</p>
-                <p>To avoid additional nodes being selected at the end of the drag, kindly use the control panel options.</p>
-                <p>Select the option for Diagonal movement if required (By default: No diagonal Movement)</p>
-                <p>Select the heuristic for informed search algorithm.</p>
-                <p>Click Start Search</p>
-                <p>Other options like clear path,clear walls and to remove additional destination points are also available</p>
-                <p>Distance traversed is displayed below. Foe multiple destination points, it is displayed adjacent to the corresponding detsination node</p>
-            
-              </div>
-            </div>
-        </div>
-    </div>
+    
 
     
     <div id="gridpanel" class="grid panel">
