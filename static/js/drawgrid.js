@@ -276,10 +276,10 @@ function search(){
         'blocked':blockednodes,
         'options':opt,
         'searchtype':searchtype,
-        csrfmiddlewaretoken: csrf_token
+        
     };
     console.log(searchparam);
-    $.post('searchpath',searchparam,function(data,status){
+    $.get('searchpath',searchparam,function(data,status){
         console.log(data,searchtype);
         drawpath(data,searchtype);
     });
