@@ -1,3 +1,4 @@
+//Global variables 
 fixedcells=[]
 var startgridno=0
 var endgridno=0
@@ -25,6 +26,8 @@ var r1;
 var sx,sy,ex,ey;
 var pathpr;
 pathpr=[]
+
+// draws grid using raphael library
 window.onload = function () {
   
     r = Raphael("grid", w, h);
@@ -90,7 +93,7 @@ window.onload = function () {
         dispcontrol();
         
   };
-
+// function to draw walls on the grid
   function drawblock(e){
     var clr="gray";
     if(document.getElementById("AddDestinationPoints").checked)
@@ -161,6 +164,7 @@ window.onload = function () {
     }
   }
 
+// function to clear the walls
 function clearwalls(){
   for(var keys in blockobj){
   blocklist[keys]=false;
@@ -183,6 +187,7 @@ function clearpath(){
   txt.length=0;
 }
 
+// function to clear multiple destination points
 function cleardest(){
   for(var keys in endobj)
   {
@@ -192,6 +197,7 @@ function cleardest(){
   }
 }
 
+// GET call used to get the shortest path from the python server
 function search(){
   var searchtype;
   
@@ -285,7 +291,7 @@ function search(){
     });
 
   }
-
+// renders/draws the path and updates distance value for every search
 function drawpath(data,s)
   {
     if((s=="bfs")||(s=="dijkstra")){
