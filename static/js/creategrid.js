@@ -1,5 +1,5 @@
 
-
+// function to get csrf token
 function getCookie(name) {
   let cookieValue = null;
   if (document.cookie && document.cookie !== '') {
@@ -16,7 +16,7 @@ function getCookie(name) {
   return cookieValue;
 }
 const csrftoken = getCookie('csrftoken');
-
+// initialises the underlying graph structure
 var dim={
   'dim1':36,
   'dim2':64,
