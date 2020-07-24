@@ -2,6 +2,7 @@ dragElement(document.getElementById("gridpanel"));
 dragElement(document.getElementById("controlpanel"));
 dragElement(document.getElementById("controlpanel2"));
 
+//function for dragging the panels on the webpage
 function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   if (document.getElementById(elmnt.id+"header")) {
