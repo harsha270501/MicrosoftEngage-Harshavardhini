@@ -87,7 +87,7 @@ window.onload = function () {
           event.preventDefault();
         });
 
-        
+        dispcontrol();
         
   };
 
@@ -292,6 +292,7 @@ function drawpath(data,s)
       path=data['Result'];
       var i2,j2,dist;
       dist=0;
+      var l=Object.keys(path).length;
       for(var pt in path)
       {
         p=path[pt][0];
@@ -308,8 +309,9 @@ function drawpath(data,s)
         }
         
         d=path[pt][1];
-        if(path.length>1){
-
+        console.log(path);
+        if(l>1){
+          console.log(1);
         t=r.text(j2,i2+31,d.toFixed(2)).attr({"font-size": 15});
         txt.push(t);
       }
