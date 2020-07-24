@@ -30,6 +30,34 @@
     <div id="grid" class="grid" onclick="drawblock(event)"></div>  
     
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Instruction Panel</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Select the appropriate fields to add/change the nodes.</p>
+        <p>Select 'Change Start' option and click anywhere at the required position on grid to change start cell position.</p>
+        <p>Select 'Change End' option and click anywhere at the required position on grid to change start position.</p>
+        <p>Select 'Add Destination' option click anywhere at the required position on grid to add destination cells.</p>
+        <p>Select 'Add Walls' option click anywhere at the required position on grid to add walls.</p>
+        <p>Select the required Algorithm and options for Diagonal Movement and start search. List of heuristics to be selected appears on clicking an Informed Search Algorithm</p>
+        <p>Multiple Destination option available only for Uninformed Search Algorithm. Distance for each destination is updated near the node</p>
+        <p>Distance at the end of the page displays the total distance traversed.</p>
+        <p>Drag the panels if required.</p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
     
     <div id="gridpanel" class="grid panel">
       <div id="gridpanelheader"><h5>Choose an Algorithm</h5></div>
@@ -81,12 +109,16 @@
         <button type="button" class="btn btn-light" onclick="search()">Start Search</button>
         <button type="button" class="btn btn-light" style="padding-left:25px;"onclick="clearwalls()">Clear Walls</button>
         <button type="button" class="btn btn-light" style="padding-left: 25px;" onclick="clearpath()">Clear Path</button>
-        <button type="button" class="btn btn-light" id="adddestptbutton" style="padding-left: 25px;width:205px;" onclick="cleardest()">Clear Destination Points</button>
+        <br><br><button type="button" class="btn btn-light" id="adddestptbutton" style="padding-left: 25px;width:205px;" onclick="cleardest()">Clear Destination Points</button>
       </div>
     </div>
 
     <div id="controlpanel" class="grid panel">
+      
       <div id="controlpanelheader" >Control Panel</div>
+      <button type="button" class="btn btn-light" id="instrbutton" style="margin-bottom: 10px;" data-toggle="modal" data-target="#exampleModalLong">
+        Instructions
+      </button>
       <div id="gridpanelcontent" style="margin-left: 5px; margin-right:5px;margin-bottom:5px;padding:7.5px;">
         <div class="radio" >
           <label><input type="radio" name="blocktype" id="Changestart">Change Start</label>
