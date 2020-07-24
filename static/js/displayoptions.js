@@ -1,3 +1,4 @@
+// change the options to be displayed
 function dispcontrol(){
     a1=document.getElementById('bestfirstsearch').checked;
     a2=document.getElementById('Asearch').checked;
